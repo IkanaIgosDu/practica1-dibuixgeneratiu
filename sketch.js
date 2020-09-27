@@ -1,6 +1,9 @@
 function setup() {
   createCanvas(450, 650);
   
+  sep = 1;
+  sentitsep = 1;
+  
   fade1 = 0;
   fade2 = 0;
   fade3 = 0;
@@ -34,13 +37,21 @@ function draw() {
     if (fade3 < 255){
       fade3 += 1 * (deltaTime / speed);
     }
+    
+    sep += sentitsep * (deltaTime / 200);
+    if (sep <= 0){
+      sentitsep = sentitsep * -1;
+    } else if (sep >= 40){
+       sentitsep = sentitsep * -1;        
+    }
+    console.log(sep);
     blendMode(BLEND);
 
     noFill();
     stroke(255, 255, 255, fade3);
     strokeWeight(10);
     for(let i=0; i <8; i++){
-    quad(posr1[0]-i*30, posr1[1], posr1[2], posr1[3]-i*30, posr1[4]+i*30, posr1[5], posr1[6], posr1[7]+i*30);
+    quad(posr1[0]-i*(30+sep), posr1[1], posr1[2], posr1[3]-i*(30+sep), posr1[4]+i*(30+sep), posr1[5], posr1[6], posr1[7]+i*(30+sep));
     }
 
 
@@ -51,7 +62,7 @@ function draw() {
     stroke(5, 156, 199, fade3);
     strokeWeight(10);
     for(let i=0; i <8; i++){
-    quad(posr2[0]-i*30, posr2[1], posr2[2], posr2[3]-i*30, posr2[4]+i*30, posr2[5], posr2[6], posr2[7]+i*30);
+    quad(posr2[0]-i*(30+sep), posr2[1], posr2[2], posr2[3]-i*(30+sep), posr2[4]+i*(30+sep), posr2[5], posr2[6], posr2[7]+i*(30+sep));
     }
   }
   //------------Moviment rombe 1----------
