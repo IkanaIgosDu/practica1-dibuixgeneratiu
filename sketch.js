@@ -44,7 +44,6 @@ function draw() {
     } else if (sep >= 40){
        sentitsep = sentitsep * -1;        
     }
-    console.log(sep);
     blendMode(BLEND);
 
     noFill();
